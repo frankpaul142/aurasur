@@ -1,0 +1,180 @@
+<!Doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+
+<title>Aurasur</title>
+
+<meta name="description" content="Aurasur, competencias, deporte y aventura">
+<meta name="keywords" content="Aurasur, competencias, deporte y aventura">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/queries-aura.css" rel="stylesheet" type="text/css">  
+    
+<script src="js/jquery-1.11.2.min.js"></script>  
+<script>
+$(document).ready(function() {
+   $("#btn-miperfil").click(function(){
+	   $("#mi-perfil").fadeIn();
+	   $("#mis-inscripciones").hide();
+	   $("#historial-carreras").hide();
+	   }); 
+	$("#btn-inscripciones").click(function(){
+	   $("#mis-inscripciones").fadeIn();
+	   $("#mi-perfil").hide();
+	   $("#historial-carreras").hide();
+	   }); 
+	$("#btn-carreras").click(function(){
+	   $("#historial-carreras").fadeIn();
+	   $("#mi-perfil").hide();
+	   $("#mis-inscripciones").hide();	   
+	   });       
+});
+</script>
+
+</head>
+
+<body>
+    <div class="home-cont" id="f-atletismo">
+      <header class="cont-header">
+      	<div class="logo-int"><img src="img/logo.jpg" alt="logotipo"/></div>
+        <div class="btn-volverm">
+        	<img src="img/f-volver.svg"/>
+            <span>Volver al menú</span>
+        </div>
+        <div class="ico-up">
+        	<a href="#"><img src="img/ico-contacto.svg" alt="contacto"/></a>
+            <a href="#"><img src="img/ico-ayuda.svg" alt="ayuda"/></a>
+            <a href="#"><img src="img/ico-perfil.svg" alt="perfil"/></a>
+        </div>
+      </header>  
+      <!--  -->
+      <div class="info-perfiles">
+     		<div class="links-perfil">
+                <a href="#" id="btn-miperfil"><img src="img/ico-perfil.svg" alt="perfil"/><span>Mi Perfil</span></a>
+                <a href="#" id="btn-inscripciones"><img src="img/ico-inscripciones.svg" alt="perfil"/><span>Mis Inscripciones</span></a>
+                <a href="#" id="btn-carreras"><img src="img/ico-historial.svg" alt="perfil"/><span>Historial de Carreras</span></a>
+            </div>
+            <h1>PABLO ANDRÉS MARTÍNEZ ESPINOSA</h1>
+            <div id="mi-perfil">
+            	<div class="campos">
+                	<div class="infor-ma">Cédula</div>	
+                    <div class="infor-actual">1157542136</div>	
+                </div>
+            	<div class="campos">
+                	<div class="infor-ma">E-mail:</div>	
+                    <div class="infor-actual">miguelieie91238@hotmail.com</div>	
+                    <div class="infor-cambiar"><input type="text"/></div>	
+                </div>
+                <div class="campos">
+                	<div class="infor-ma">Número celular:</div>	
+                    <div class="infor-actual">099522485</div>	
+                    <div class="infor-cambiar"><input type="text"/></div>	
+                </div>
+                <div class="campos">
+                	<div class="infor-ma">Direccion:</div>	
+                    <div class="infor-actual">James COlmet N40-36 y Alonso de Torres</div>	
+                    <div class="infor-cambiar"><input type="text"/></div>	
+                </div>
+                <div class="campos">
+                	<div class="infor-ma">Talla de Camiseta:</div>	
+                    <div class="infor-actual">XS</div>	
+                    <div class="infor-cambiar">
+                    	<select>
+                        	<option>XS</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                        </select>
+                    </div>	
+                </div>
+                <div class="campos">
+                	<div class="infor-ma">Contraseña:</div>	
+                    <div class="infor-actual">************</div>	
+                    <div class="infor-cambiar"><input type="text"/></div>	
+                </div>
+            </div>
+            <div id="mis-inscripciones">
+            	<table width="100%" cellpadding="0" cellspacing="0">
+                	<tr>
+                    	<td class="table-header">Mis Competencias</td>
+                        <td class="table-header esc-tabla">Deporte</td>
+                        <td class="table-header esc-tabla">Categoría</td>
+                        <td class="table-header">Fecha</td>
+                        <td class="table-header">&nbsp;</td>
+                    </tr>
+                    <tr>
+                    	<td class="table-info">Nissan Rey de la Montaña</td>
+                        <td class="table-info txt-c esc-tabla">Triatlón</td>
+                        <td class="table-info txt-c esc-tabla">Hombres - Master B</td>
+                        <td class="table-info txt-c">25/12/2015 - 15:00</td>
+                        <td class="table-info txt-c"><a href="#">Información</a></td>
+                    </tr>
+                    <tr>
+                    	<td class="table-info">Nissan Rey de la Montaña</td>
+                        <td class="table-info txt-c esc-tabla">Triatlón</td>
+                        <td class="table-info txt-c esc-tabla">Hombres - Master B</td>
+                        <td class="table-info txt-c">25/12/2015 - 15:00</td>
+                        <td class="table-info txt-c"><a href="#">Información</a></td>
+                    </tr>
+                    <tr>
+                    	<td class="table-info">Nissan Rey de la Montaña</td>
+                        <td class="table-info txt-c esc-tabla">Triatlón</td>
+                        <td class="table-info txt-c esc-tabla">Hombres - Master B</td>
+                        <td class="table-info txt-c">25/12/2015 - 15:00</td>
+                        <td class="table-info txt-c"><a href="#">Información</a></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- -->
+            <div id="historial-carreras">
+            	<table width="100%" cellpadding="0" cellspacing="0">
+                	<tr>
+                    	<td class="table-header">Mis Competencias</td>
+                        <td class="table-header esc-tabla">Deporte</td>
+                        <td class="table-header esc-tabla">Categoría</td>
+                        <td class="table-header">Fecha</td>
+                        <td class="table-header">&nbsp;</td>
+                    </tr>
+                    <tr>
+                    	<td class="table-info">Nissan Rey de la Montaña</td>
+                        <td class="table-info txt-c esc-tabla">Triatlón</td>
+                        <td class="table-info txt-c esc-tabla">Hombres - Master B</td>
+                        <td class="table-info txt-c">25/12/2015 - 15:00</td>
+                        <td class="table-info txt-c"><a href="#">Resultados</a></td>
+                    </tr>
+                    <tr>
+                    	<td colspan="5">
+                        	<div class="resultado-com">
+                        		Quito - Ecuador  /  Sábado 25 de Marzo 2014.<br/>
+                            	Pos: 121		Tiempo de Carrera:  00 : 05 : 50 : 36
+                            </div>
+                        </td>
+                    <tr/>
+                    <tr>
+                    	<td class="table-info">Nissan Rey de la Montaña</td>
+                        <td class="table-info txt-c esc-tabla">Triatlón</td>
+                        <td class="table-info txt-c esc-tabla">Hombres - Master B</td>
+                        <td class="table-info txt-c">25/12/2015 - 15:00</td>
+                        <td class="table-info txt-c"><a href="#">Resultados</a></td>
+                    </tr>
+                    <tr>
+                    	<td class="table-info">Nissan Rey de la Montaña</td>
+                        <td class="table-info txt-c esc-tabla">Triatlón</td>
+                        <td class="table-info txt-c esc-tabla">Hombres - Master B</td>
+                        <td class="table-info txt-c">25/12/2015 - 15:00</td>
+                        <td class="table-info txt-c"><a href="#">Resultados</a></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- -->
+      </div>
+      <!-- --> 
+      <div class="footer-int">
+      	® 2015 aurasur.   Todos los Derechos Reservados.    Desarrollado por SHARE DITAL AGENCY
+      </div> 
+    </div>    
+</body>
+</html>
