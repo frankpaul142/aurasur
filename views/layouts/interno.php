@@ -27,11 +27,11 @@ AppAssetI::register($this);
   		<a href="<?= Yii::getAlias('@web') ?>">
   			<div class="logo-int"><img src="<?= Yii::getAlias('@web') ?>/img/logo.jpg" alt="logotipo"/></div>
   		</a>
-  		<a href="<?= Yii::getAlias('@web') ?>">
-    	<div class="btn-volverm">
-    		<img src="<?= Yii::getAlias('@web') ?>/img/f-volver.svg"/>
-        	<span>Volver al menú</span>
-    	</div>
+  		<a href="javascript:goBack()">
+	    	<div class="btn-volverm">
+	    		<img src="<?= Yii::getAlias('@web') ?>/img/f-volver.svg"/>
+	        	<span>Volver al menú</span>
+	    	</div>
     	</a>
     	<div class="ico-up">
 	    	<a href="#"><img src="<?= Yii::getAlias('@web') ?>/img/ico-contacto.svg" alt="contacto"/></a>
@@ -46,6 +46,16 @@ AppAssetI::register($this);
       	® 2015 aurasur.   Todos los Derechos Reservados.    Desarrollado por SHARE DITAL AGENCY
     </div>
 </div>
+<script type="text/javascript">
+function goBack () {
+	if(document.referrer==""){
+		window.location="<?= Yii::getAlias('@web') ?>";
+	}
+	else{
+		window.history.back();
+	}
+}
+</script>
 <?php $this->endBody() ?>
 </body>
 </html>

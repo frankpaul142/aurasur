@@ -18,7 +18,7 @@ $(".prev").click(function(){
 ?>
 
 <div class="cont-carrerasinternas">
-  	<a href="#" id="flechaL" class="prev"><img src="<?= Yii::getAlias('@web') ?>/img/ico-flechal.svg"/></a>
+  	<a href="javascript:void()" id="flechaL" class="prev"><img src="<?= Yii::getAlias('@web') ?>/img/ico-flechal.svg"/></a>
     <div id="cont-carreras" class="owl-carousel">
     <?php foreach ($model->races as $race) { ?>
     	<!-- contenedor carreras -->
@@ -47,5 +47,5 @@ $(".prev").click(function(){
         </div>
     <?php } ?>
     </div>
-    <a href="#" id="flechaR" class="next"><img src="<?= Yii::getAlias('@web') ?>/img/ico-flechar.svg"/></a>
+    <a href="javascript:void()" id="flechaR" class="next"><img src="<?= Yii::getAlias('@web') ?>/img/ico-flechar.svg"/></a>
 </div>
