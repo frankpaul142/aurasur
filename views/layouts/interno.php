@@ -24,11 +24,15 @@ AppAssetI::register($this);
 <?php $this->beginBody() ?>
 <div class="home-cont" id="f-atletismo">
   	<header class="cont-header">
-  		<div class="logo-int"><img src="<?= Yii::getAlias('@web') ?>/img/logo.jpg" alt="logotipo"/></div>
+  		<a href="<?= Yii::getAlias('@web') ?>">
+  			<div class="logo-int"><img src="<?= Yii::getAlias('@web') ?>/img/logo.jpg" alt="logotipo"/></div>
+  		</a>
+  		<a href="<?= Yii::getAlias('@web') ?>">
     	<div class="btn-volverm">
     		<img src="<?= Yii::getAlias('@web') ?>/img/f-volver.svg"/>
         	<span>Volver al menú</span>
     	</div>
+    	</a>
     	<div class="ico-up">
 	    	<a href="#"><img src="<?= Yii::getAlias('@web') ?>/img/ico-contacto.svg" alt="contacto"/></a>
 	        <a href="#"><img src="<?= Yii::getAlias('@web') ?>/img/ico-ayuda.svg" alt="ayuda"/></a>

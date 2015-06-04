@@ -11,7 +11,6 @@ use Yii;
  * @property string $name
  * @property string $picture
  * @property string $status
- * @property string $title_picture
  *
  * @property Race[] $races
  */
@@ -31,10 +30,10 @@ class Sport extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'picture', 'status', 'title_picture'], 'required'],
+            [['name', 'picture', 'status'], 'required'],
             [['status'], 'string'],
             [['name'], 'string', 'max' => 30],
-            [['picture', 'title_picture'], 'string', 'max' => 255]
+            [['picture'], 'string', 'max' => 255]
         ];
     }
 
@@ -48,7 +47,6 @@ class Sport extends \yii\db\ActiveRecord
             'name' => 'Name',
             'picture' => 'Picture',
             'status' => 'Status',
-            'title_picture' => 'Title Picture',
         ];
     }
 
@@ -57,6 +55,6 @@ class Sport extends \yii\db\ActiveRecord
      */
     public function getRaces()
     {
-        return $this->hasMany(Race::className(), ['sport_id' => 'id']);
+        return $this->hasMany(Race::className(), ['sport_id' => 'id'])->orderBy('date');
     }
 }

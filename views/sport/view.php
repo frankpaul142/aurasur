@@ -1,5 +1,7 @@
 <?php
 /* @var $this yii\web\View */
+use yii\helpers\Url;
+
 $this->title=$model->name;
 
 $this->registerJs('
@@ -10,7 +12,7 @@ $(".next").click(function(){
 	owl.trigger("owl.next");
 });
 $(".prev").click(function(){
-owl.trigger("owl.prev");
+	owl.trigger("owl.prev");
 });
 ');
 ?>
@@ -22,19 +24,25 @@ owl.trigger("owl.prev");
     	<!-- contenedor carreras -->
         <div class="secc sep-compt">
         	<div class="back-black">
-            	<div class="img-headerc">
-            		<img src="<?= Yii::getAlias('@web') ?>/img/back-running.png"/>
-                	<div class="l-diagonal"><?= $race->name ?></div>
-                </div>
-                <div class="img-carrera">
-                	<img src="<?= Yii::getAlias('@web') ?>/img/carrera/<?= $race->picture ?>" alt="carrera"/>
-                </div>
+        		<a href="<?= Url::to(['race/view','id'=>$race->id]) ?>">
+	            	<div class="img-headerc">
+	            		<img src="<?= Yii::getAlias('@web') ?>/img/back/<?= $model->picture ?>"/>
+	                	<div class="l-diagonal"><?= $race->name ?></div>
+	                </div>
+	                <div class="img-carrera">
+	                	<img src="<?= Yii::getAlias('@web') ?>/img/carrera/<?= $race->picture ?>" alt="carrera"/>
+	                </div>
+                </a>
                 <div class="inf-carrera">
                 	<strong>Lugar: </strong><?= $race->place ?><br/><br/>
-                    <strong>Fecha: </strong><?php setlocale(LC_TIME, "es_ES.UTF-8"); echo strftime('%d de %B de %Y',strtotime($race->date)); ?><br/><br/>
+                    <strong>Fecha: </strong><?= Yii::$app->formatter->asDate($race->date,"d 'de' MMMM 'de' y") ?><br/><br/>
                     <strong>Valor: </strong><?= $race->cost ?> dólares
                 </div>
-                <a href="#" class="ver-resultados">Ver Resultados</a>
+                <?php if($race->status=='PENDING'){ ?>
+                	<a href="#" class="ver-inscribirse">Inscribirse</a>
+                <?php } elseif($race->status=='FINISHED') { ?>
+                	<a href="#" class="ver-resultados">Ver Resultados</a>
+                <?php } ?>
             </div>
         </div>
     <?php } ?>

@@ -44,6 +44,9 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+	    'formatter'=>[
+	        'timeZone' => 'America/Guayaquil',
+	    ],
     ],
     'params' => $params,
 ];
