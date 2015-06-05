@@ -14,10 +14,12 @@ class AppAssetI extends AssetBundle
         'css/owl.carousel.css',
         'css/owl.theme.css',
         'css/owl.transitions.css',
+        'css/fotorama.css',
     ];
     public $js = [
         // 'js/jquery-1.11.2.min.js',
         'js/owl.carousel.js',
+        'js/fotorama.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -1,5 +1,7 @@
 <?php
 /* @var $this yii\web\View */
+use yii\helpers\Url;
+
 $this->title=$model->name;
 ?>
 
@@ -24,7 +26,7 @@ $this->title=$model->name;
 	    <?php if($model->status=='PENDING'){ ?>
         	<a href="#" class="ver-inscribirse">Inscribirse</a>
         <?php } elseif($model->status=='FINISHED') { ?>
-        	<a href="#" class="ver-resultados">Ver Resultados</a>
+        	<a href="<?= Url::to(['race/results','id'=>$model->id]) ?>" class="ver-resultados">Ver Resultados</a>
         <?php } ?>
 	</div>
 

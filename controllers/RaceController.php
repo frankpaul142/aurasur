@@ -21,4 +21,17 @@ class RaceController extends \yii\web\Controller
     	}
     }
 
+    public function actionResults($id)
+    {
+        $model=Race::findOne($id);
+    	if(isset($model)){
+    		return $this->render('results',[
+    			'model'=>$model,
+    		]);
+    	}
+    	else{
+    		throw new NotFoundHttpException('The requested page does not exist.');
+    	}
+    }
+
 }
