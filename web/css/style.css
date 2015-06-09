@@ -261,13 +261,13 @@ top: -100%;
 	font-family: 'ralewaybold';
 	float:left;
 	}
-.cont-iniciarsesion input[type="text"]{
+.cont-iniciarsesion input[type="text"], .cont-iniciarsesion input[type="password"]{
 	width:100%;
 	float:left;
 	padding:10px 0;
 	margin:3% 0;
 	}	
-.cont-iniciarsesion input[type="submit"]{
+.cont-iniciarsesion button[type="submit"]{
 	width:50%;
 	float:left;
 	padding:10px 0;
@@ -331,7 +331,7 @@ top: -100%;
 	color: #FFF;
 	margin: 1% 2% 0 0;
 	}
-.cont-registraperfil input[type="text"]{
+.cont-registraperfil input[type="text"], .cont-registraperfil input[type="password"]{
 	width:59%;
 	float:left;
 	padding:3px 0;
@@ -341,7 +341,7 @@ top: -100%;
 	float:left;
 	padding:3px 0;
 	}
-.cont-registraperfil input[type="submit"]{
+.cont-registraperfil button[type="submit"]{
 	width:50%;
 	float:left;
 	padding:10px 0;

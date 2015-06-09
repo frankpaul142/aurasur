@@ -25,11 +25,11 @@ AppAsset::register($this);
 <div class="home-cont">
 	<div class="home-cont-left">
 	    <div class="view-prof" id="btn-compromiso">
-	        <div class="prof-img"><img src="img/img-22.png"></div>
+	        <div class="prof-img"><img src="<?= Yii::getAlias('@web') ?>/img/img-22.png"></div>
 	        <div class="prof-txt">Ver tu Perfil</div>
 	    </div>
 	    <div class="prof-cont">
-	    	<img src="img/logotipo.png" alt="logotipo aurasur"/>
+	    	<img src="<?= Yii::getAlias('@web') ?>/img/logotipo.png" alt="logotipo aurasur"/>
 	        <span>
 	        Aurasur, empresa organizadora de eventos y  competencias deportivas.
 			<br/><br/>
@@ -37,11 +37,11 @@ AppAsset::register($this);
 	        <br/><br/>
 	        ¡Ponte a Prueba!
 	        </span>
-	        <a href="#" class="bnt-memb">Membresía</a>
-	        <a href="#" class="btn-iseccion">Inicia tu sesión</a>
+	        <a href="<?= Yii::getAlias('@web') ?>/user/create" class="bnt-memb">Membresía</a>
+	        <a href="<?= Yii::getAlias('@web') ?>/site/login" class="btn-iseccion">Inicia sesión</a>
 	        <ul>
-	        	<li><a href="#"><img src="img/ico-face.svg" class="logo facebook"/></a></li>
-	            <li><a href="#"><img src="img/ico-twitter.svg" class="logo twitter"/></a></li>
+	        	<li><a href="#"><img src="<?= Yii::getAlias('@web') ?>/img/ico-face.svg" class="logo facebook"/></a></li>
+	            <li><a href="#"><img src="<?= Yii::getAlias('@web') ?>/img/ico-twitter.svg" class="logo twitter"/></a></li>
 	        </ul>
 	        <div class="cierre-inf">
 	        ® 2015 aurasur. Todos los Derechos Reservados. Desarrollado por  SHARE DITAL AGENCY.</div>
