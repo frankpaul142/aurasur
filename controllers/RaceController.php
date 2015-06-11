@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Race;
+use app\models\RacerSearch;
+use yii\web\NotFoundHttpException;
 
 class RaceController extends \yii\web\Controller
 {
@@ -25,8 +28,12 @@ class RaceController extends \yii\web\Controller
     {
         $model=Race::findOne($id);
     	if(isset($model)){
+	        $searchModel = new RacerSearch();
+	        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
     		return $this->render('results',[
     			'model'=>$model,
+    			'searchModel'=>$searchModel,
+    			'dataProvider'=>$dataProvider,
     		]);
     	}
     	else{

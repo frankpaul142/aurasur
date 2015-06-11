@@ -1,5 +1,7 @@
 <?php
 /* @var $this yii\web\View */
+use yii\helpers\Url;
+
 $this->title=$model->name;
 $this->registerJs('
 $("#btn-miperfil").click(function(){
@@ -22,9 +24,9 @@ $("#btn-carreras").click(function(){
 
 <div class="info-perfiles">
 		<div class="links-perfil">
-        <a href="#" id="btn-miperfil"><img src="<?= Yii::getAlias('@web') ?>/img/ico-perfil.svg" alt="perfil"/><span>Mi Perfil</span></a>
-        <a href="#" id="btn-inscripciones"><img src="<?= Yii::getAlias('@web') ?>/img/ico-inscripciones.svg" alt="perfil"/><span>Mis Inscripciones</span></a>
-        <a href="#" id="btn-carreras"><img src="<?= Yii::getAlias('@web') ?>/img/ico-historial.svg" alt="perfil"/><span>Historial de Carreras</span></a>
+        <a href="javascript:void(0)" id="btn-miperfil"><img src="<?= Yii::getAlias('@web') ?>/img/ico-perfil.svg" alt="perfil"/><span>Mi Perfil</span></a>
+        <a href="javascript:void(0)" id="btn-inscripciones"><img src="<?= Yii::getAlias('@web') ?>/img/ico-inscripciones.svg" alt="perfil"/><span>Mis Inscripciones</span></a>
+        <a href="javascript:void(0)" id="btn-carreras"><img src="<?= Yii::getAlias('@web') ?>/img/ico-historial.svg" alt="perfil"/><span>Historial de Carreras</span></a>
     </div>
     <h1><?= $model->name.' '.$model->lastname ?></h1>
     <div id="mi-perfil">
@@ -81,7 +83,7 @@ $("#btn-carreras").click(function(){
 		                <td class="table-info txt-c esc-tabla"><?= $racer->race->sport->name ?></td>
 		                <td class="table-info txt-c esc-tabla"><?= $racer->category->name ?></td>
 		                <td class="table-info txt-c"><?= Yii::$app->formatter->asDate($racer->race->date,"dd/MM/y - HH:mm") ?></td>
-		                <td class="table-info txt-c"><a href="#">Información</a></td>
+		                <td class="table-info txt-c"><a href="<?= Url::to(['race/view','id'=>$racer->race_id]) ?>">Información</a></td>
 		            </tr>
             	<?php }
             } ?>
@@ -104,7 +106,7 @@ $("#btn-carreras").click(function(){
 		                <td class="table-info txt-c esc-tabla"><?= $racer->race->sport->name ?></td>
 		                <td class="table-info txt-c esc-tabla"><?= $racer->category->name ?></td>
 		                <td class="table-info txt-c"><?= Yii::$app->formatter->asDate($racer->race->date,"dd/MM/y - HH:mm") ?></td>
-		                <td class="table-info txt-c"><a href="#">Resultados</a></td>
+		                <td class="table-info txt-c"><a href="<?= Url::to(['race/view','id'=>$racer->race_id]) ?>">Resultados</a></td>
 		            </tr>
 		            <tr>
 		            	<td colspan="5">
@@ -119,4 +121,5 @@ $("#btn-carreras").click(function(){
         </table>
     </div>
     <!-- -->
+    <a href="<?= Url::to(['site/logout']) ?>" data-method="post">Cerrar Sesión</a>
 </div>

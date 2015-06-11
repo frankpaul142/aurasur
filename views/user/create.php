@@ -24,7 +24,7 @@ $this->title='Registra tu perfil';
 	    ]); ?>
         	<?= $form->field($model, 'name', ['inputOptions'=>['placeholder'=>'Escribe aquí']]) ?>
         	<?= $form->field($model, 'lastname', ['inputOptions'=>['placeholder'=>'Escribe aquí']]) ?>
-        	<?= $form->field($model, 'email', ['inputOptions'=>['placeholder'=>'Escribe aquí']]) ?>
+        	<?= $form->field($model, 'username', ['inputOptions'=>['placeholder'=>'Escribe aquí']]) ?>
             <?= $form->field($model, 'sex')->dropDownList([ 'MALE' => 'Masculino', 'FEMALE' => 'Femenino', ], ['prompt' => 'Escoge']) ?>
             <?= $form->field($model, 'birthdate')->widget(DatePicker::className(),['removeButton'=>false, 'pluginOptions'=>['format'=>'yyyy-mm-dd']]) ?>
             <?= $form->field($model, 'identity', ['inputOptions'=>['placeholder'=>'Escribe aquí']]) ?>

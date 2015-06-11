@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use app\assets\AppAssetI;
+use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -30,13 +31,13 @@ AppAssetI::register($this);
   		<a href="javascript:goBack()">
 	    	<div class="btn-volverm">
 	    		<img src="<?= Yii::getAlias('@web') ?>/img/f-volver.svg"/>
-	        	<span>Volver al menú</span>
+	        	<span>Volver</span>
 	    	</div>
     	</a>
     	<div class="ico-up">
 	    	<a href="#"><img src="<?= Yii::getAlias('@web') ?>/img/ico-contacto.svg" alt="contacto"/></a>
 	        <a href="#"><img src="<?= Yii::getAlias('@web') ?>/img/ico-ayuda.svg" alt="ayuda"/></a>
-	        <a href="#"><img src="<?= Yii::getAlias('@web') ?>/img/ico-perfil.svg" alt="perfil"/></a>
+	        <a href="<?= Yii::$app->user->isGuest ? Url::to(['site/login']) : Url::to(['user/view','id'=>Yii::$app->user->id]) ?>"><img src="<?= Yii::getAlias('@web') ?>/img/ico-perfil.svg" alt="perfil"/></a>
     	</div>
   	</header>
 

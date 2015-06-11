@@ -50,13 +50,13 @@ class Racer extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'category_id' => 'Category ID',
+            'category_id' => 'Categoría',
             'race_id' => 'Race ID',
-            'user_id' => 'User ID',
-            'position_category' => 'Position Category',
-            'position_general' => 'Position General',
-            'time1' => 'Time1',
-            'time2' => 'Time2',
+            'user_id' => 'Deportista',
+            'position_category' => 'Posición Categoría',
+            'position_general' => 'Posición General',
+            'time1' => 'Tiempo Chip',
+            'time2' => 'Tiempo Disparo',
             'creation_date' => 'Creation Date',
         ];
     }

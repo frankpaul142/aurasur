@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 use yii\helpers\Url;
+use app\models\Racer;
 
 $this->title=$model->name;
 ?>
@@ -23,9 +24,13 @@ $this->title=$model->name;
 		<?php if($model->attachment1){ ?>
 	    	<a href="#" class="link-informacion"><img src="<?= Yii::getAlias('@web') ?>/img/ico-descargar.svg" alt="descargar"/> <span>Terminos y Condiciones</span></a>
 	    <?php } ?>
-	    <?php if($model->status=='PENDING'){ ?>
-        	<a href="#" class="ver-inscribirse">Inscribirse</a>
-        <?php } elseif($model->status=='FINISHED') { ?>
+	    <?php if($model->status=='PENDING'){
+	    	if(!Yii::$app->user->isGuest && Racer::find()->where('user_id='.Yii::$app->user->id.' AND race_id='.$model->id)->one()) { ?>
+	        	<a class="ver-inscribirse">Inscrito</a>
+	        <?php } else { ?>
+	        	<a href="#" class="ver-inscribirse">Inscribirse</a>
+	        <?php }
+        } elseif($model->status=='FINISHED') { ?>
         	<a href="<?= Url::to(['race/results','id'=>$model->id]) ?>" class="ver-resultados">Ver Resultados</a>
         <?php } ?>
 	</div>

@@ -1,5 +1,9 @@
 <?php
 /* @var $this yii\web\View */
+use kartik\grid\GridView;
+use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
+
 $this->title=$model->name;
 
 $this->registerJs('
@@ -25,137 +29,56 @@ $this->registerJs('
     </div>
     <div class="tit-competencias">
     	<span><?= $model->name ?></span>
-        <label>Filtrar Categoría:</label>
-        <select>
-        	<option>General</option>
-            <option>Hombres - Master B</option>
-            <option>Mujeres - Master B</option>
-            <option>Senior</option>
-        </select>
     </div>
     <div id="info-carrera">
-    	<table width="100%" cellpadding="0" cellspacing="0">
-        	<tr>
-            	<td class="table-header">Pos.</td>
-                <td class="table-header">Deportista</td>
-                <td class="table-header">Categoría</td>
-                <td class="table-header">Tiempo en Carrera</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-            <tr>
-            	<td class="table-info txt-c">1</td>
-                <td class="table-info txt-c">Pablo Martinez Espinosa</td>
-                <td class="table-info txt-c">Hombres - Master B</td>
-                <td class="table-info txt-c">00 : 03 : 45 : 27</td>
-            </tr>
-        </table>
+        <?= GridView::widget([
+	        'dataProvider' => $dataProvider,
+	        'filterModel' => $searchModel,
+	        'export'=>false,
+	        'pjax'=>true,
+	        'bootstrap'=>false,
+	        'floatHeader'=>true,
+	        'layout'=>'{items}{summary}{pager}',
+	        // 'showPageSummary' => true,
+	        'columns' => [
+	            [
+				    'class'=>'kartik\grid\SerialColumn',
+				    'headerOptions'=>['class'=>'table-header'],
+	            	'contentOptions'=>['class'=>'table-info txt-c'],
+				    'width'=>'36px',
+				    'header'=>'',
+				],
+	            ['attribute'=>'position_general',
+	            'headerOptions'=>['class'=>'table-header'],
+	            'contentOptions'=>['class'=>'table-info txt-c'],],
+	            [
+		            'attribute'=>'user.name',
+		            'value'=>function ($model, $key, $index, $widget){
+		            	return $model->user->name.' '.$model->user->lastname;
+		            },
+		            'headerOptions'=>['class'=>'table-header'],
+		            'contentOptions'=>['class'=>'table-info txt-c'],
+		            /*'filterType'=>GridView::FILTER_SELECT2,
+				    'filter'=>ArrayHelper::map(Author::find()->orderBy('name')->asArray()->all(), 'id', 'name'), 
+				    'filterWidgetOptions'=>[
+				        'pluginOptions'=>['allowClear'=>true],
+				    ],
+				    'filterInputOptions'=>['placeholder'=>'Any author'],*/
+	            ],
+	            [
+		            'attribute'=>'category_id',
+		            'value'=>'category.name',
+		            'headerOptions'=>['class'=>'table-header'],
+		            'contentOptions'=>['class'=>'table-info txt-c'],
+		            'filterType'=>GridView::FILTER_SELECT2,
+		            'filter'=>ArrayHelper::merge([''=>'Todas'],ArrayHelper::map($model->categories, 'id', 'name')),
+	            ],
+	            ['attribute'=>'time1',
+	            'headerOptions'=>['class'=>'table-header'],
+	            'contentOptions'=>['class'=>'table-info txt-c'],],
+	        ],
+	    ]); ?>
+    	
     </div>
     <div id="info-galeria">
     	<div class="cont-galeria">

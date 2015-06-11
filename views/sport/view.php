@@ -41,7 +41,7 @@ $(".prev").click(function(){
                 <?php if($race->status=='PENDING'){ ?>
                 	<a href="#" class="ver-inscribirse">Inscribirse</a>
                 <?php } elseif($race->status=='FINISHED') { ?>
-                	<a href="#" class="ver-resultados">Ver Resultados</a>
+                	<a href="<?= Url::to(['race/results','id'=>$race->id]) ?>" class="ver-resultados">Ver Resultados</a>
                 <?php } ?>
             </div>
         </div>

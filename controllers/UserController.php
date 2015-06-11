@@ -7,6 +7,25 @@ use app\models\User;
 
 class UserController extends \yii\web\Controller
 {
+
+	public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['view'],
+                'rules' => [
+                    // allow authenticated users
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    // everything else is denied
+                ],
+            ],
+        ];
+    }
+
     public function actionCreate()
     {
         $model=new User(['scenario'=>'register']);

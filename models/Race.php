@@ -76,7 +76,7 @@ class Race extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategories()
+    public function getCategories0()
     {
         return $this->hasMany(Categories::className(), ['race_id' => 'id']);
     }
@@ -84,7 +84,7 @@ class Race extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategories0()
+    public function getCategories()
     {
         return $this->hasMany(Category::className(), ['id' => 'category_id'])->viaTable('categories', ['race_id' => 'id']);
     }

@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -24,12 +25,18 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <div class="home-cont">
 	<div class="home-cont-left">
-	    <div class="view-prof" id="btn-compromiso">
-	        <div class="prof-img"><img src="<?= Yii::getAlias('@web') ?>/img/img-22.png"></div>
-	        <div class="prof-txt">Ver tu Perfil</div>
-	    </div>
+		<div class="view-prof" id="btn-compromiso">
+			<?php if(!Yii::$app->user->isGuest){ ?>
+			<a href="<?= Url::to(['user/view','id'=>Yii::$app->user->id]) ?>">
+			        <div class="prof-img"><img src="<?= Yii::getAlias('@web') ?>/img/img-22.png"></div>
+			        <div class="prof-txt">Ver tu Perfil</div>
+		    </a>
+		    <?php } ?>
+		</div>
 	    <div class="prof-cont">
-	    	<img src="<?= Yii::getAlias('@web') ?>/img/logotipo.png" alt="logotipo aurasur"/>
+	    	<a href="<?= Yii::getAlias('@web') ?>">
+	    		<img src="<?= Yii::getAlias('@web') ?>/img/logotipo.png" alt="logotipo aurasur"/>
+	    	</a>
 	        <span>
 	        Aurasur, empresa organizadora de eventos y  competencias deportivas.
 			<br/><br/>
@@ -37,8 +44,13 @@ AppAsset::register($this);
 	        <br/><br/>
 	        ¡Ponte a Prueba!
 	        </span>
-	        <a href="<?= Yii::getAlias('@web') ?>/user/create" class="bnt-memb">Membresía</a>
-	        <a href="<?= Yii::getAlias('@web') ?>/site/login" class="btn-iseccion">Inicia sesión</a>
+	        <?php if(Yii::$app->user->isGuest){ ?>
+		        <a href="<?= Url::to(['user/create']) ?>" class="bnt-memb">Membresía</a>
+		        <a href="<?= Url::to(['site/login']) ?>" class="btn-iseccion">Inicia sesión</a>
+	        <?php } else { ?>
+	        	<a href="<?= Url::to(['user/view','id'=>Yii::$app->user->id]) ?>" class="bnt-memb">Ver tu perfil</a>
+		        <a href="<?= Url::to(['site/logout']) ?>" data-method="post" class="btn-iseccion">Cerrar sesión</a>
+	        <?php } ?>
 	        <ul>
 	        	<li><a href="#"><img src="<?= Yii::getAlias('@web') ?>/img/ico-face.svg" class="logo facebook"/></a></li>
 	            <li><a href="#"><img src="<?= Yii::getAlias('@web') ?>/img/ico-twitter.svg" class="logo twitter"/></a></li>
