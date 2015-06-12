@@ -23,7 +23,7 @@ $("#btn-carreras").click(function(){
 ?>
 
 <div class="info-perfiles">
-		<div class="links-perfil">
+	<div class="links-perfil">
         <a href="javascript:void(0)" id="btn-miperfil"><img src="<?= Yii::getAlias('@web') ?>/img/ico-perfil.svg" alt="perfil"/><span>Mi Perfil</span></a>
         <a href="javascript:void(0)" id="btn-inscripciones"><img src="<?= Yii::getAlias('@web') ?>/img/ico-inscripciones.svg" alt="perfil"/><span>Mis Inscripciones</span></a>
         <a href="javascript:void(0)" id="btn-carreras"><img src="<?= Yii::getAlias('@web') ?>/img/ico-historial.svg" alt="perfil"/><span>Historial de Carreras</span></a>

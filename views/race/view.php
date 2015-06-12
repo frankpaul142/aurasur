@@ -28,7 +28,7 @@ $this->title=$model->name;
 	    	if(!Yii::$app->user->isGuest && Racer::find()->where('user_id='.Yii::$app->user->id.' AND race_id='.$model->id)->one()) { ?>
 	        	<a class="ver-inscribirse">Inscrito</a>
 	        <?php } else { ?>
-	        	<a href="#" class="ver-inscribirse">Inscribirse</a>
+	        	<a href="<?= Url::to(['race/pay','id'=>$model->id]) ?>" class="ver-inscribirse">Inscribirse</a>
 	        <?php }
         } elseif($model->status=='FINISHED') { ?>
         	<a href="<?= Url::to(['race/results','id'=>$model->id]) ?>" class="ver-resultados">Ver Resultados</a>

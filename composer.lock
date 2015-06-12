@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1b778aa5ad44101b22aec194c82c8966",
+    "hash": "ae085210b1c5a0d11f6eb60af56dcc7f",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -505,6 +505,54 @@
                 "yii2"
             ],
             "time": "2015-05-09 08:06:45"
+        },
+        {
+            "name": "paypal/rest-api-sdk-php",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
+                "reference": "47fdacd929b55ec9b5ef5281168dbe9460c19777"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/47fdacd929b55ec9b5ef5281168dbe9460c19777",
+                "reference": "47fdacd929b55ec9b5ef5281168dbe9460c19777",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PayPal": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "PayPal",
+                    "homepage": "https://github.com/paypal/rest-api-sdk-php/contributors"
+                }
+            ],
+            "description": "PayPal's PHP SDK for REST APIs",
+            "homepage": "https://github.com/paypal/rest-api-sdk-php",
+            "keywords": [
+                "payments",
+                "paypal",
+                "rest",
+                "sdk"
+            ],
+            "time": "2015-06-08 18:35:46"
         },
         {
             "name": "swiftmailer/swiftmailer",
