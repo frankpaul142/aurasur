@@ -296,7 +296,7 @@ top: -100%;
 	}	
 .cont-registraperfil{
 	width:46%;
-	margin:5% 25% 0 25%;
+	margin:2% 25% 0 25%;
 	padding:2% 2%;
 	background:rgba(0,0,0,0.7);
 	float:left;
@@ -799,6 +799,16 @@ top: -100%;
 	width:70%;
 	margin:0 15%;
 	}	
+/**/
+.input-group{
+	width:59% !important;
+	float:left !important;
+	}	
+.input-group input{
+	width:100% !important;
+	float:left !important;
+	border-radius:7px !important;
+	}		
 	
 	
 	
