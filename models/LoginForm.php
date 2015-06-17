@@ -12,6 +12,7 @@ class LoginForm extends Model
 {
     public $username;
     public $password;
+    private $status='INACTIVE';
     public $rememberMe = true;
 
     private $_user = false;
@@ -27,8 +28,10 @@ class LoginForm extends Model
             [['username', 'password'], 'required'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
+           ["username", "validateUserStatus"],  
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+
         ];
     }
 
@@ -43,11 +46,27 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-
+          
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Usuario o contraseña incorrecta.');
             }
         }
+    }
+ 
+   public function validateUserStatus($attribute,$params)
+    {
+        if (!$this->hasErrors()) {
+        $user = $this->getUser();
+
+        // check status and resend email if inactive
+        if($user){
+        if ( $user->status != 'ACTIVE') {
+            $this->addError($attribute, 'Usuario inactivo o por confirmar.');
+        }
+         }else{
+           $this->addError($attribute, 'Usuario o contraseña incorrecta.'); 
+         }
+     }
     }
 
     /**
