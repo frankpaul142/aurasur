@@ -57,7 +57,11 @@ $config = [
 	        // message source
 	        // 'downloadAction' => 'gridview/export/download',
 	        // 'i18n' => []
-	    ]
+	    ],
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'layout'=>'admin',
+        ],
 	],
 ];
 
