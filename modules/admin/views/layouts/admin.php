@@ -37,12 +37,10 @@ AdminAsset::register($this);
                 echo Nav::widget([
                     'options' => ['class' => 'navbar-nav navbar-right'],
                     'items' => [
-                        ['label'=>'Categorias', 'url'=>['/admin/category']],
-                        ['label'=>'Noticias', 'url'=>['/admin/news']],
-                        ['label'=>'Tests', 'url'=>['/admin/test']],
-                        ['label'=>'Preguntas EVA', 'url'=>['/admin/ask']],
-                        ['label'=>'Horoscopo', 'url'=>['/admin/week']],
-                        ['label'=>'Banners', 'url'=>['/admin/banner']],
+                        ['label'=>'Deportes', 'url'=>['/admin/sport']],
+                        ['label'=>'Carreras', 'url'=>['/admin/race']],
+						['label'=>'Usuarios', 'url'=>['/admin/user']],
+						['label'=>'Categorias', 'url'=>['/admin/category']],
                         ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                             'url' => ['/admin/default/logout'],
                             'linkOptions' => ['data-method' => 'post']],

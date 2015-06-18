@@ -8,6 +8,7 @@ use app\models\RaceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Sport;
 
 /**
  * RaceController implements the CRUD actions for Race model.
@@ -61,12 +62,13 @@ class RaceController extends Controller
     public function actionCreate()
     {
         $model = new Race();
-
+		$sports=Sport::findAll(['status'=>'ACTIVE']);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
-                'model' => $model,
+				'model' => $model,
+				'sports'=>$sports,
             ]);
         }
     }
@@ -80,12 +82,13 @@ class RaceController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+		$sports=Sport::findAll(['status'=>'ACTIVE']);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+				'sports'=>$sports,
             ]);
         }
     }

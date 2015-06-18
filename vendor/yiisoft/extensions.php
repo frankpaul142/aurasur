@@ -69,7 +69,7 @@ return array (
   'kartik-v/yii2-krajee-base' => 
   array (
     'name' => 'kartik-v/yii2-krajee-base',
-    'version' => '9999999-dev',
+    'version' => '1.7.7.0',
     'alias' => 
     array (
       '@kartik/base' => $vendorDir . '/kartik-v/yii2-krajee-base',
@@ -78,7 +78,7 @@ return array (
   'kartik-v/yii2-grid' => 
   array (
     'name' => 'kartik-v/yii2-grid',
-    'version' => '3.0.2.0',
+    'version' => '3.0.3.0',
     'alias' => 
     array (
       '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid',
@@ -87,10 +87,37 @@ return array (
   'kartik-v/yii2-widget-select2' => 
   array (
     'name' => 'kartik-v/yii2-widget-select2',
-    'version' => '2.0.0.0',
+    'version' => '2.0.1.0',
     'alias' => 
     array (
       '@kartik/select2' => $vendorDir . '/kartik-v/yii2-widget-select2',
+    ),
+  ),
+  '2amigos/yii2-tinymce-widget' => 
+  array (
+    'name' => '2amigos/yii2-tinymce-widget',
+    'version' => '1.1.1.0',
+    'alias' => 
+    array (
+      '@dosamigos/tinymce' => $vendorDir . '/2amigos/yii2-tinymce-widget/src',
+    ),
+  ),
+  'kartik-v/yii2-widget-fileinput' => 
+  array (
+    'name' => 'kartik-v/yii2-widget-fileinput',
+    'version' => '1.0.2.0',
+    'alias' => 
+    array (
+      '@kartik/file' => $vendorDir . '/kartik-v/yii2-widget-fileinput',
+    ),
+  ),
+  'kartik-v/yii2-widget-datetimepicker' => 
+  array (
+    'name' => 'kartik-v/yii2-widget-datetimepicker',
+    'version' => '1.4.0.0',
+    'alias' => 
+    array (
+      '@kartik/datetime' => $vendorDir . '/kartik-v/yii2-widget-datetimepicker',
     ),
   ),
 );

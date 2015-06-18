@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+	<?= $form->field($model, 'type')->dropDownList([ 'ADMIN' => 'ADMIN', 'RACER' => 'RACER', 'ORGANIZER' => 'ORGANIZER', 'SALE' => 'SALE', ], ['prompt' => '']) ?>
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'lastname')->textInput(['maxlength' => true]) ?>
@@ -29,8 +31,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'size')->dropDownList([ 'XS' => 'XS', 'S' => 'S', 'M' => 'M', 'L' => 'L', 'XL' => 'XL', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'contact_name')->textInput(['maxlength' => true]) ?>
 
@@ -51,8 +51,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'allergies')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList([ 'ACTIVE' => 'ACTIVE', 'INACTIVE' => 'INACTIVE', 'CONFIRMING' => 'CONFIRMING', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'creation_date')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

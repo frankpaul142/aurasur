@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -29,7 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'sport_id',
+			['attribute'=>'Deporte',
+			 'format'=>'raw',
+			 'value'=>Html::a($model->sport->name, Url::to(['sport/view', 'id'=>$model->sport_id]))],
             'name',
             'place',
             'date',
@@ -39,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'attachment2',
             'picture',
             'status',
-            'creation_date',
+//            'creation_date',
         ],
     ]) ?>
 

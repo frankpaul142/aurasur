@@ -29,7 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'lastname',
             'username',
-            'sex',
+			'type',
+//            'sex',
             // 'birthdate',
             // 'identity',
             // 'cellphone',
@@ -45,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'recent_injuries',
             // 'surgeries',
             // 'allergies',
-            // 'status',
+             'status',
             // 'creation_date',
 
             ['class' => 'yii\grid\ActionColumn'],
