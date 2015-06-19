@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Sport;
+use yii\web\UploadedFile;
 
 /**
  * RaceController implements the CRUD actions for Race model.
@@ -63,8 +64,30 @@ class RaceController extends Controller
     {
         $model = new Race();
 		$sports=Sport::findAll(['status'=>'ACTIVE']);
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $picture=UploadedFile::getInstance($model,'picture');
+        $sponsor=UploadedFile::getInstance($model,'sponsor');
+        if ($model->load(Yii::$app->request->post())){
+            if($picture!=NULL){
+                $name=date('Y_m_d_H_i_s_'). $picture->baseName .'.' . $picture->extension;
+                $model->picture=$name;
+                if($sponsor!=NULL){
+	                $model->sponsor=$name;
+	            }
+            }
+            $model->creation_date=date('Y-m-d H:i:s');
+            if($model->save()) {
+            	if($picture!=NULL){
+	                $picture->saveAs('img/carrera/'.$name);
+	                if($sponsor!=NULL){
+		                $sponsor->saveAs('img/carrera/auspiciante/'.$name);
+		            }
+	            }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+            else{
+            	print_r($model->getErrors());
+            	die();
+            }
         } else {
             return $this->render('create', [
 				'model' => $model,

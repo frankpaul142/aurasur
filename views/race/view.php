@@ -36,7 +36,10 @@ $this->title=$model->name;
 	</div>
 
 	<div class="infor-carrera">
+		<span>
 		<?= $model->description ?>
+		</span>
+		<br />
 		<br />
 		<span><strong>Auspiciantes:</strong></span>
 		<img src="<?= Yii::getAlias('@web') ?>/img/carrera/auspiciante/<?= $model->picture ?>" alt="auspiciantes"/>

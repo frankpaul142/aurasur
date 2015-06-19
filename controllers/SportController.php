@@ -21,4 +21,12 @@ class SportController extends \yii\web\Controller
     	}
     }
 
+    public function actionIndex()
+    {
+        $sports=Sport::findAll(['status'=>'ACTIVE']);
+        return $this->render('index',[
+            'sports'=>$sports,
+        ]);
+    }
+
 }

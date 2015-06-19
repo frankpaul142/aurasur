@@ -9,7 +9,7 @@ $this->title = 'Aurasur';
     <div class="secc">
         <div class="top-txt"><a href='<?= Url::to(['sport/view','id'=>$sport->id]) ?>'><img src='<?= Yii::getAlias('@web').'/img/titulo/'.$sport->picture ?>'></a></div>
         <div class="top-img">
-            <a href='<?= Url::to(['sport/view','id'=>$sport->id]) ?>'>
+            <a href='<?= Yii::getAlias('@web').'/sport#'.$sport->name ?>'>
                 <img src='<?= Yii::getAlias('@web').'/img/'.$sport->picture ?>'>
                 <img src='<?= Yii::getAlias('@web').'/img/bn/'.$sport->picture ?>' class="img-bn"/>
             </a>

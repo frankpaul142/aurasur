@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -22,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sex')->dropDownList([ 'MALE' => 'MALE', 'FEMALE' => 'FEMALE', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'birthdate')->textInput() ?>
+    <?= $form->field($model, 'birthdate')->widget(DatePicker::className(),['removeButton'=>false, 'pluginOptions'=>['format'=>'yyyy-mm-dd']]) ?>
 
     <?= $form->field($model, 'identity')->textInput(['maxlength' => true]) ?>
 

@@ -14,7 +14,7 @@ use kartik\file\FileInput;
 
 <div class="race-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
 	<?= $form->field($model, 'sport_id')->dropDownList(ArrayHelper::map($sports,'id','name'),['prompt'=>'']) ?>
 
@@ -74,6 +74,33 @@ use kartik\file\FileInput;
 		'pluginEvents'=>[
 			'fileclear'=>'function(){$("#pictureChanged").val("true")}',
 			'fileloaded'=>'function(){$("#pictureChanged").val("true")}',
+		]
+	]) ?>
+	
+	<input type="hidden" name="sponsorChanged" value="false" id="sponsorChanged">
+	<?php if($model->isNewRecord){
+		$pluginOptions=[
+			'showUpload'=>false,
+			'initialPreviewShowDelete'=>true,
+			'previewFileType'=>'image',
+		];
+	}
+	else{
+		$pluginOptions=[
+			'showUpload'=>false, 
+			'initialPreview'=>[Html::img(Yii::getAlias('@web')."/img/carrera/auspiciante/".$model->picture, ['class'=>'file-preview-image', 'alt'=>$model->picture])], 
+			'initialPreviewShowDelete'=>true,
+			'previewFileType'=>'image',
+		];
+	} ?>
+	<?= $form->field($model, 'sponsor')->widget(FileInput::classname(),[
+		'options'=>[
+			'accept'=>'image/*'
+		],
+		'pluginOptions'=>$pluginOptions,
+		'pluginEvents'=>[
+			'fileclear'=>'function(){$("#sponsorChanged").val("true")}',
+			'fileloaded'=>'function(){$("#sponsorChanged").val("true")}',
 		]
 	]) ?>
 

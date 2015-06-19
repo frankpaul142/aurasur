@@ -28,6 +28,7 @@ use Yii;
  */
 class Race extends \yii\db\ActiveRecord
 {
+	public $sponsor;
     /**
      * @inheritdoc
      */
@@ -48,7 +49,8 @@ class Race extends \yii\db\ActiveRecord
             [['cost'], 'number'],
             [['description', 'status'], 'string'],
             [['name', 'place'], 'string', 'max' => 100],
-            [['attachment1', 'attachment2', 'picture'], 'string', 'max' => 255]
+            [['picture','sponsor'],'file','extensions'=>'jpg,png'],
+            [['attachment1', 'attachment2'], 'file','extensions'=>'pdf'],
         ];
     }
 
@@ -67,9 +69,10 @@ class Race extends \yii\db\ActiveRecord
             'description' => 'Descripcion',
             'attachment1' => 'Adjunto 1',
             'attachment2' => 'Adjunto 2',
-            'picture' => 'Imagen',
+            'picture' => 'Imagen Carrera',
             'status' => 'Status',
             'creation_date' => 'Creation Date',
+			'sponsor'=>'Auspiciantes',
         ];
     }
 
