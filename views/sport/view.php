@@ -18,6 +18,19 @@ $(".prev").click(function(){
 ?>
 
 <div class="cont-carrerasinternas">
+	<!-- -->
+        <h1>*Selecciona tu deporte.</h1>
+        <ul class="menu-carreras">
+        	<li><a href="#" id="btn-aventura" class="deporte-selected">AVENTURA</a></li>
+            <li><a href="#" id="btn-ironman">IRON MAN</a></li>
+            <li><a href="#" id="btn-mtb">MTB</a></li>
+            <li><a href="#" id="btn-natacion">NATACIÓN</a></li>
+            <li><a href="#" id="btn-running">RUNNING</a></li>
+            <li><a href="#" id="btn-ruta">RUTA</a></li>
+            <li><a href="#" id="btn-trailrunning">TRAILRUNNING</a></li>
+            <li><a href="#" id="btn-triatlon">TRIATLÓN</a></li>
+        </ul>
+	<!-- -->
   	<a href="javascript:void(0)" id="flechaL" class="prev"><img src="<?= Yii::getAlias('@web') ?>/img/ico-flechal.svg"/></a>
     <div id="cont-carreras" class="owl-carousel">
     <?php foreach ($model->races as $race) { ?>
