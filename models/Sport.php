@@ -44,8 +44,8 @@ class Sport extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'picture' => 'Picture',
+            'name' => 'Nombre',
+            'picture' => 'Imagen',
             'status' => 'Status',
         ];
     }

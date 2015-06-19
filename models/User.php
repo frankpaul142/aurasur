@@ -44,7 +44,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['name', 'lastname', 'username', 'sex', 'birthdate', 'identity', 'cellphone', 'address', 'size', 'password', 'status', 'creation_date'], 'required'],
+            [['name', 'lastname', 'username', 'sex', 'birthdate', 'identity', 'cellphone', 'address', 'size', 'password', 'status', 'creation_date','type'], 'required'],
             [['confirmPassword'], 'required', 'on'=>'register'],
             [['sex', 'size', 'status'], 'string'],
             [['birthdate', 'creation_date'], 'safe'],
@@ -144,6 +144,7 @@ class User extends ActiveRecord implements IdentityInterface
            	'allergies' => 'Alergias',
            	'status' => 'Status',
            	'creation_date' => 'Fecha de Creación',
+			'type'=>'Tipo',
         ];
     }
     public function getIsAdmin()
