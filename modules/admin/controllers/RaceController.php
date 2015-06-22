@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Sport;
+use app\models\Category;
+use app\models\Categories;
 use yii\web\UploadedFile;
 
 /**
@@ -50,8 +52,15 @@ class RaceController extends Controller
      */
     public function actionView($id)
     {
+    	$model=$this->findModel($id);
+    	$categories=$model->categories;
+    	$c='';
+    	foreach ($categories as $category) {
+    		$c.=$category->name.' , ';
+    	}
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'categories'=>$c,
         ]);
     }
 
@@ -64,6 +73,11 @@ class RaceController extends Controller
     {
         $model = new Race(['scenario'=>'create']);
 		$sports=Sport::findAll(['status'=>'ACTIVE']);
+		$categories=Category::find()->all();
+        $c=[];
+        foreach ($categories as $category) {
+        	$c[$category->id]=$category->name;
+		}
         $picture=UploadedFile::getInstance($model,'picture');
         $sponsor=UploadedFile::getInstance($model,'sponsor');
         $attachment1=UploadedFile::getInstance($model,'attachment1');
@@ -98,6 +112,12 @@ class RaceController extends Controller
 	            if($attachment2!=NULL){
 	                $attachment2->saveAs('img/carrera/adjunto/'.$name2);
 	            }
+	            if($_POST['Race']['categories']!=''){
+		            foreach ($_POST['Race']['categories'] as $i => $category) {
+		            	$nt=Category::findOne($category);
+		            	$model->link('categories',$nt);
+		            }
+		        }
                 return $this->redirect(['view', 'id' => $model->id]);
             }
             else{
@@ -108,6 +128,7 @@ class RaceController extends Controller
             return $this->render('create', [
 				'model' => $model,
 				'sports'=>$sports,
+				'categories'=>$c,
             ]);
         }
     }
@@ -122,6 +143,11 @@ class RaceController extends Controller
     {
         $model = $this->findModel($id);
 		$sports=Sport::findAll(['status'=>'ACTIVE']);
+		$categories=Category::find()->all();
+        $c=[];
+        foreach ($categories as $category) {
+        	$c[$category->id]=$category->name;
+		}
 		$picture=UploadedFile::getInstance($model,'picture');
         $sponsor=UploadedFile::getInstance($model,'sponsor');
         $attachment1=UploadedFile::getInstance($model,'attachment1');
@@ -175,6 +201,23 @@ class RaceController extends Controller
         	else{
         		$model->attachment2=$last_attachment2;
         	}
+        	if($_POST['Race']['categories']!=''){
+        		foreach ($model->categories as $i => $category) {
+        			if (!array_search($category->id, $_POST['Race']['categories'])) {
+        				$nt=Category::findOne($category->id);
+        				$model->unlink('categories',$nt,true);
+        			}
+        		}
+	            foreach ($_POST['Race']['categories'] as $i => $category) {
+	            	if(!Categories::findOne(['race_id'=>$model->id, 'category_id'=>$category])){
+		            	$nt=Category::findOne($category);
+		            	$model->link('categories',$nt);
+		            }
+	            }
+	        }
+	        else{
+	        	$model->unlinkAll('categories',true);
+	        }
         	if($model->save()) {
         		if($picture!=NULL){
 	                $picture->saveAs('img/carrera/'.$name);
@@ -199,6 +242,7 @@ class RaceController extends Controller
             return $this->render('update', [
                 'model' => $model,
 				'sports'=>$sports,
+				'categories'=>$c,
             ]);
         }
     }

@@ -43,6 +43,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'picture',
             'status',
 //            'creation_date',
+            ['label'=>'Categorias',
+            'value'=>$categories],
         ],
     ]) ?>
 

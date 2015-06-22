@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use dosamigos\tinymce\TinyMce;
 use kartik\datetime\DateTimePicker;
 use kartik\file\FileInput;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Race */
@@ -47,7 +48,7 @@ use kartik\file\FileInput;
 	]);?>
 
     <input type="hidden" name="attachment1Changed" value="false" id="attachment1Changed">
-    <?php if($model->isNewRecord){
+    <?php if($model->isNewRecord || $model->attachment1==''){
 		$pluginOptions=[
 			'showUpload'=>false,
 			'initialPreviewShowDelete'=>true,
@@ -142,6 +143,12 @@ use kartik\file\FileInput;
 	]) ?>
 
     <?= $form->field($model, 'status')->dropDownList([ 'PENDING' => 'PENDING', 'FINISHED' => 'FINISHED', 'INACTIVE' => 'INACTIVE', ], ['prompt' => '']) ?>
+
+    <?= $form->field($model, 'categories')->widget(Select2::classname(),[
+    	'data'=>$categories,
+    	'language'=>'es',
+    	'options'=>['multiple'=>true]
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
