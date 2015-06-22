@@ -46,9 +46,46 @@ use kartik\file\FileInput;
 		]
 	]);?>
 
-    <?= $form->field($model, 'attachment1')->textInput(['maxlength' => true]) ?>
+    <input type="hidden" name="attachment1Changed" value="false" id="attachment1Changed">
+    <?php if($model->isNewRecord){
+		$pluginOptions=[
+			'showUpload'=>false,
+			'initialPreviewShowDelete'=>true,
+			'previewFileType'=>'any',
+		];
+	}
+	else{
+		$pluginOptions=[
+			'showUpload'=>false, 
+			'initialPreview'=>"<div class='file-preview-text'><h2><i class='glyphicon glyphicon-file'></i></h2>".$model->attachment1."</div>", 
+			'initialPreviewShowDelete'=>true,
+			'previewFileType'=>'any',
+		];
+	} ?>
+	<?= $form->field($model, 'attachment1')->widget(FileInput::classname(),[
+		'options'=>[
+			'accept'=>'application/pdf'
+		],
+		'pluginOptions'=>$pluginOptions,
+		'pluginEvents'=>[
+			'fileclear'=>'function(){$("#attachment1Changed").val("true")}',
+			'fileloaded'=>'function(){$("#attachment1Changed").val("true")}',
+		]
+	]) ?>
 
-    <?= $form->field($model, 'attachment2')->textInput(['maxlength' => true]) ?>
+    <input type="hidden" name="attachment2Changed" value="false" id="attachment2Changed">
+	<?= $form->field($model, 'attachment2')->widget(FileInput::classname(),[
+		'options'=>[
+			'accept'=>'application/pdf'
+		],
+		'pluginOptions'=>[
+			'showUpload'=>false,
+		],
+		'pluginEvents'=>[
+			'fileclear'=>'function(){$("#attachment2Changed").val("true")}',
+			'fileloaded'=>'function(){$("#attachment2Changed").val("true")}',
+		]
+	]) ?>
 
 	<input type="hidden" name="pictureChanged" value="false" id="pictureChanged">
 	<?php if($model->isNewRecord){

@@ -43,7 +43,8 @@ class Race extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sport_id', 'name', 'place', 'date', 'cost', 'description', 'picture', 'status', 'creation_date'], 'required'],
+            [['sport_id', 'name', 'place', 'date', 'cost', 'description', 'status', 'creation_date'], 'required'],
+            [['picture'],'required','on'=>'create'],
             [['sport_id'], 'integer'],
             [['date', 'creation_date'], 'safe'],
             [['cost'], 'number'],

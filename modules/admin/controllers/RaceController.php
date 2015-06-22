@@ -62,10 +62,12 @@ class RaceController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Race();
+        $model = new Race(['scenario'=>'create']);
 		$sports=Sport::findAll(['status'=>'ACTIVE']);
         $picture=UploadedFile::getInstance($model,'picture');
         $sponsor=UploadedFile::getInstance($model,'sponsor');
+        $attachment1=UploadedFile::getInstance($model,'attachment1');
+        $attachment2=UploadedFile::getInstance($model,'attachment2');
         if ($model->load(Yii::$app->request->post())){
             if($picture!=NULL){
                 $name=date('Y_m_d_H_i_s_'). $picture->baseName .'.' . $picture->extension;
@@ -74,6 +76,14 @@ class RaceController extends Controller
 	                $model->sponsor=$name;
 	            }
             }
+            if($attachment1!=NULL){
+                $name1=date('Y_m_d_H_i_s_'). $attachment1->baseName .'.' . $attachment1->extension;
+                $model->attachment1=$name1;
+            }
+            if($attachment2!=NULL){
+                $name2=date('Y_m_d_H_i_s_'). $attachment2->baseName .'.' . $attachment2->extension;
+                $model->attachment2=$name2;
+            }
             $model->creation_date=date('Y-m-d H:i:s');
             if($model->save()) {
             	if($picture!=NULL){
@@ -81,6 +91,12 @@ class RaceController extends Controller
 	                if($sponsor!=NULL){
 		                $sponsor->saveAs('img/carrera/auspiciante/'.$name);
 		            }
+	            }
+	            if($attachment1!=NULL){
+	                $attachment1->saveAs('img/carrera/adjunto/'.$name1);
+	            }
+	            if($attachment2!=NULL){
+	                $attachment2->saveAs('img/carrera/adjunto/'.$name2);
 	            }
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -106,8 +122,79 @@ class RaceController extends Controller
     {
         $model = $this->findModel($id);
 		$sports=Sport::findAll(['status'=>'ACTIVE']);
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+		$picture=UploadedFile::getInstance($model,'picture');
+        $sponsor=UploadedFile::getInstance($model,'sponsor');
+        $attachment1=UploadedFile::getInstance($model,'attachment1');
+        $attachment2=UploadedFile::getInstance($model,'attachment2');
+		$last_picture=$model->picture;
+		$last_attachment1=$model->attachment1;
+		$last_attachment2=$model->attachment2;
+        if ($model->load(Yii::$app->request->post())){
+        	if($_POST['pictureChanged']=='true'){
+            	// unlink('images/'.$last_picture);
+	        	if($picture!=NULL){
+	            	$name=date('Y_m_d_H_i_s_'). $picture->baseName .'.' . $picture->extension;
+	            	$model->picture=$name;
+	            	if($sponsor!=NULL){
+		            	$name=date('Y_m_d_H_i_s_'). $sponsor->baseName .'.' . $sponsor->extension;
+		            	$model->sponsor=$name;
+		        	}
+	        	}
+	        }
+        	else{
+        		$model->picture=$last_picture;
+        	}
+        	if($_POST['sponsorChanged']=='true'){
+	        	if($sponsor!=NULL){
+	            	if($picture!=NULL){
+		            	$model->sponsor=$name;
+		        	}
+		        	else{
+		            	$model->sponsor=$last_picture;
+		        	}
+	        	}
+	        }
+        	else{
+        		$model->sponsor=$last_picture;
+        	}
+        	if($_POST['attachment1Changed']=='true'){
+	        	if($attachment1!=NULL){
+	            	$name1=date('Y_m_d_H_i_s_'). $attachment1->baseName .'.' . $attachment1->extension;
+	            	$model->attachment1=$name1;
+	        	}
+	        }
+        	else{
+        		$model->attachment1=$last_attachment1;
+        	}
+        	if($_POST['attachment2Changed']=='true'){
+	        	if($attachment2!=NULL){
+	            	$name2=date('Y_m_d_H_i_s_'). $attachment2->baseName .'.' . $attachment2->extension;
+	            	$model->attachment2=$name2;
+	        	}
+	        }
+        	else{
+        		$model->attachment2=$last_attachment2;
+        	}
+        	if($model->save()) {
+        		if($picture!=NULL){
+	                $picture->saveAs('img/carrera/'.$name);
+	            }
+        		if($sponsor!=NULL){
+        			if($picture!=NULL){
+	                	$sponsor->saveAs('img/carrera/auspiciante/'.$name);
+	                }
+	                else{
+	                	$sponsor->saveAs('img/carrera/auspiciante/'.$last_picture);
+	                }
+	            }
+	            if($attachment1!=NULL){
+	                $attachment1->saveAs('img/carrera/adjunto/'.$name1);
+	            }
+	            if($attachment2!=NULL){
+	                $attachment2->saveAs('img/carrera/adjunto/'.$name2);
+	            }
+            	return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
