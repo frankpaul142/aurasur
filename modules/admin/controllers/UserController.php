@@ -88,12 +88,13 @@ class UserController extends Controller
 
         if ($model->load(Yii::$app->request->post())){
             if(Yii::$app->user->identity->isSale){
-            	$model->password=hash('sha256',$model->identity);
                 $model->type='RACER';
                 $model->status='CONFIRMING';
             }
+            $model->password=hash('sha256',$model->identity);
             $model->creation_date=date('Y-m-d H:i:s');
             if($model->save()) {
+            	Yii::$app->session->setFlash('userCreated');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
             else{

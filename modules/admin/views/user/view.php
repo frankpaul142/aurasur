@@ -12,6 +12,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
 
+    <?php if(Yii::$app->session->hasFlash('userCreated')){
+        echo 'La contraseña guardada es la cédula/pasaporte';
+    } ?>
+
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
