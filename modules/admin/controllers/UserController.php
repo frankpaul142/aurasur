@@ -23,6 +23,30 @@ class UserController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                // 'only' => ['index','view','create','update','delete'],
+                'rules' => [
+                    // allow authenticated users
+                    [
+                        'actions' => ['index','create','update','delete','view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->isAdmin;
+                        }
+                    ],
+                    [
+                        'actions' => ['create','view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->isSale;
+                        }
+                    ],
+                    // everything else is denied
+                ],
+            ],
         ];
     }
 
@@ -62,13 +86,23 @@ class UserController extends Controller
     {
         $model = new User();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if ($model->load(Yii::$app->request->post())){
+            if(Yii::$app->user->identity->isSale){
+            	$model->password=hash('sha256',$model->identity);
+                $model->type='RACER';
+                $model->status='CONFIRMING';
+            }
+            $model->creation_date=date('Y-m-d H:i:s');
+            if($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+            else{
+            	Yii::$app->session->setFlash('errorUser',array_values($model->getFirstErrors())[0]);
+            }
         }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**

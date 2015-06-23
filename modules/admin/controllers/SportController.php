@@ -23,6 +23,22 @@ class SportController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                // 'only' => ['index','view','create','update','delete'],
+                'rules' => [
+                    // allow authenticated users
+                    [
+                        'actions' => ['index','create','update','delete','view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->isAdmin;
+                        }
+                    ],
+                    // everything else is denied
+                ],
+            ],
         ];
     }
 

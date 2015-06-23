@@ -8,9 +8,6 @@ use yii\db\ActiveRecord;
 use yii\helpers\Security;
 use yii\web\IdentityInterface;
 
-use yii\behaviors\TimestampBehavior;
-use yii\db\Expression;
-
 /**
  * This is the model class for table "user".
  *
@@ -147,6 +144,7 @@ class User extends ActiveRecord implements IdentityInterface
 			'type'=>'Tipo',
         ];
     }
+
     public function getIsAdmin()
     {
         $return = false;
@@ -154,6 +152,14 @@ class User extends ActiveRecord implements IdentityInterface
             $return=true;
         return $return;
     }
+    public function getIsSale()
+    {
+        $return = false;
+        if($this->type=='SALE')
+            $return=true;
+        return $return;
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
