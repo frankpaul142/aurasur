@@ -16,6 +16,9 @@ use Yii;
  */
 class Sport extends \yii\db\ActiveRecord
 {
+    public $bn;
+    public $title;
+
     /**
      * @inheritdoc
      */
@@ -30,7 +33,8 @@ class Sport extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'picture', 'status'], 'required'],
+            [['name', 'status','color'], 'required'],
+            [['picture','bn','title'],'required','on'=>'create'],
             [['status'], 'string'],
             [['name'], 'string', 'max' => 30],
             [['picture'], 'string', 'max' => 255]
@@ -47,6 +51,9 @@ class Sport extends \yii\db\ActiveRecord
             'name' => 'Nombre',
             'picture' => 'Imagen',
             'status' => 'Status',
+            'color'=>'Color',
+            'bn'=>'Imagen B/N',
+            'title'=>'Imagen Titulo',
         ];
     }
 

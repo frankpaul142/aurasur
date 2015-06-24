@@ -177,10 +177,6 @@ class RaceController extends Controller
 	        	if($picture!=NULL){
 	            	$name=date('Y_m_d_H_i_s_'). $picture->baseName .'.' . $picture->extension;
 	            	$model->picture=$name;
-	            	if($sponsor!=NULL){
-		            	$name=date('Y_m_d_H_i_s_'). $sponsor->baseName .'.' . $sponsor->extension;
-		            	$model->sponsor=$name;
-		        	}
 	        	}
 	        }
         	else{

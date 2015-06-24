@@ -24,7 +24,7 @@ $(".prev").click(function(){
         <ul class="menu-carreras">
             <!-- <li><a href="#" id="btn-aventura" class="deporte-selected">AVENTURA</a></li> -->
             <?php foreach ($sports as $i => $sport) { ?>
-            <li><a href="#<?= $sport->name ?>" style="background-color:#<?= $sport->color ?>"><?= $sport->name ?></a></li>
+            <li><a href="#<?= $sport->name ?>" style="background-color:<?= $sport->color ?>"><?= $sport->name ?></a></li>
             <?php } ?>
         </ul>
     <!-- -->

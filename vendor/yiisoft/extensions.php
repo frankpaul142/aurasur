@@ -120,4 +120,13 @@ return array (
       '@kartik/datetime' => $vendorDir . '/kartik-v/yii2-widget-datetimepicker',
     ),
   ),
+  'kartik-v/yii2-widget-colorinput' => 
+  array (
+    'name' => 'kartik-v/yii2-widget-colorinput',
+    'version' => '1.0.0.0',
+    'alias' => 
+    array (
+      '@kartik/color' => $vendorDir . '/kartik-v/yii2-widget-colorinput',
+    ),
+  ),
 );

@@ -8,6 +8,7 @@ use app\models\SportSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * SportController implements the CRUD actions for Sport model.
@@ -76,10 +77,33 @@ class SportController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Sport();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model = new Sport(['scenario'=>'create']);
+        $picture=UploadedFile::getInstance($model,'picture');
+        $bn=UploadedFile::getInstance($model,'bn');
+        $title=UploadedFile::getInstance($model,'title');
+        if ($model->load(Yii::$app->request->post())){
+            if($picture!=NULL){
+                $name=date('Y_m_d_H_i_s_'). $picture->baseName .'.' . $picture->extension;
+                $model->picture=$name;
+                if($bn!=NULL){
+                    $model->bn=$name;
+                }
+                if($title!=NULL){
+                    $model->title=$name;
+                }
+            }
+            if($model->save()) {
+            	if($picture!=NULL){
+	                $picture->saveAs('img/'.$name);
+	                if($bn!=NULL){
+		                $bn->saveAs('img/bn/'.$name);
+		            }
+	                if($title!=NULL){
+		                $bn->saveAs('img/titulo/'.$name);
+		            }
+	            }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -96,9 +120,69 @@ class SportController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $picture=UploadedFile::getInstance($model,'picture');
+        $bn=UploadedFile::getInstance($model,'bn');
+        $title=UploadedFile::getInstance($model,'title');
+        $last_picture=$model->picture;
+        if ($model->load(Yii::$app->request->post())){
+        	if($_POST['pictureChanged']=='true'){
+            	// unlink('images/'.$last_picture);
+	        	if($picture!=NULL){
+	            	$name=date('Y_m_d_H_i_s_'). $picture->baseName .'.' . $picture->extension;
+	            	$model->picture=$name;
+	        	}
+	        }
+        	else{
+        		$model->picture=$last_picture;
+        	}
+        	if($_POST['bnChanged']=='true'){
+	        	if($bn!=NULL){
+	            	if($picture!=NULL){
+		            	$model->bn=$name;
+		        	}
+		        	else{
+		            	$model->bn=$last_picture;
+		        	}
+	        	}
+	        }
+        	else{
+        		$model->bn=$last_picture;
+        	}
+        	if($_POST['titleChanged']=='true'){
+	        	if($title!=NULL){
+	            	if($picture!=NULL){
+		            	$model->title=$name;
+		        	}
+		        	else{
+		            	$model->title=$last_picture;
+		        	}
+	        	}
+	        }
+        	else{
+        		$model->title=$last_picture;
+        	}
+        	if($model->save()) {
+        		if($picture!=NULL){
+	                $picture->saveAs('img/'.$name);
+	            }
+        		if($bn!=NULL){
+        			if($picture!=NULL){
+	                	$bn->saveAs('img/bn/'.$name);
+	                }
+	                else{
+	                	$bn->saveAs('img/bn/'.$last_picture);
+	                }
+	            }
+        		if($title!=NULL){
+        			if($picture!=NULL){
+	                	$title->saveAs('img/titulo/'.$name);
+	                }
+	                else{
+	                	$title->saveAs('img/titulo/'.$last_picture);
+	                }
+	            }
+	            return $this->redirect(['view', 'id' => $model->id]);
+	        }
         } else {
             return $this->render('update', [
                 'model' => $model,
