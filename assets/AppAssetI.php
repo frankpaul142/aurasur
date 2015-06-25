@@ -20,6 +20,7 @@ class AppAssetI extends AssetBundle
         // 'js/jquery-1.11.2.min.js',
         'js/owl.carousel.js',
         'js/fotorama.js',
+        'js/jquery-scrollspy.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
