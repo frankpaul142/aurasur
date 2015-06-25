@@ -68,6 +68,9 @@ footer, header, hgroup, menu, nav, section {
 img{
 	width:100%;
 	}
+a{
+	color:#FFFFFF;
+	}	
 body {
 	line-height: 1.3em;
     margin: 0;
@@ -363,11 +366,12 @@ top: -100%;
 	background: -ms-linear-gradient(top, rgba(48,176,205,1) 0%, rgba(33,130,151,1) 100%);
 	background: linear-gradient(to bottom, rgba(48,176,205,1) 0%, rgba(33,130,151,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30b0cd', endColorstr='#218297', GradientType=0 );
-	position:relative;
+	position:fixed;
 	padding:5px 0;
+	z-index:5000;
 	}
 .logo-int{
-	width:10%;
+	width:8%;
 	float:left;
 	background: rgba(255,255,255,1);
 	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(219,220,221,1) 100%);
@@ -384,8 +388,7 @@ top: -100%;
 .btn-volverm{
 	width:135px;
 	float:left;
-	
-	margin:0 0 0 15%;
+	margin:0 0 0 13%;
 	}
 .btn-volverm img{
 	width:30px;
@@ -413,11 +416,14 @@ top: -100%;
 	background-image:url(../img/fonto-atletismo.jpg);
 	background-size:cover;
 	background-repeat:no-repeat;
+	height:auto !important;
+	position:absolute !important;
+	min-height:100%;
 	}	
 .cont-carrerasinternas{
 	width:80%;
 	float:left;
-	margin:8% 10% 0 10%;
+	margin:8% 10% 5% 10%;
 	position:relative;
 	}	
 #flechaL{
@@ -748,7 +754,7 @@ top: -100%;
 	}
 /**/
 #info-carrera{
-	width:95%;
+	width:99.5%;
 	float:left;
 	padding:1% 2.5%;
 	background: rgba(0,0,0,0.7);
@@ -758,10 +764,10 @@ top: -100%;
 	overflow-y:auto;
 	}	
 .tit-competencias{
-	width:90%;
+	width:99.5%;
 	float:left;
 	font-size:1.5em;
-	padding:7px 5%;
+	padding:7px 0 7px 5%;
 	color:#FFF;
 	font-family: 'ralewaybold';
 	background-color:#524078;
@@ -787,7 +793,7 @@ top: -100%;
 	float:right !important;
 	}
 #info-galeria{
-	width:95%;
+	width:99.5%;
 	float:left;
 	padding:1% 2.5%;
 	background: rgba(0,0,0,0.7);
@@ -801,7 +807,7 @@ top: -100%;
 	}	
 /**/
 .input-group{
-	width:59% !important;
+	width:100% !important;
 	float:left !important;
 	}	
 .input-group input{
@@ -811,10 +817,10 @@ top: -100%;
 	}
 /**/
 .menu-carreras{
-	width:90%;
+	width:100%;
 	float:left;
 	padding:0;
-	margin:0 5% 0.5% 5%;
+	margin:0 0 0.5% 0;
 	}
 .menu-carreras li{
 	width:12.1%;
@@ -841,10 +847,10 @@ top: -100%;
 	-webkit-transition:0.3s;
 	}
 .cont-carrerasinternas h1{
-	width:90%;
+	width:100%;
 	float:left;
 	padding:0 0 0.5% 0;
-	margin:0 5% 1% 5%;
+	margin:0 0 1% 0;
 	color:#FFFFFF;
 	font-family: 'ralewaybold';
 	font-size:1.5em;
@@ -864,9 +870,25 @@ top: -100%;
 	color:#262425 !important;
 	background-color:#fff !important;
 	}			
-	
-	
-	
+/* summary */
+.summary{
+	color:#FFFFFF;
+	margin:5px 0 0 0;
+	}	
+#w0-filters input[type='text']{
+	width:96%;
+	height:34px;
+	margin:0 2%;
+	float:left;
+	}	
+#btn-topcarreras{
+	width:50px;
+	position:fixed;
+	bottom:7%;
+	right:3%;
+	z-index:1000;
+	display:none;
+	}	
 	
 	
 	

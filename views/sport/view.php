@@ -17,7 +17,7 @@ $(".prev").click(function(){
 ');
 ?>
 
-<div class="cont-carrerasinternas">
+<div class="cont-carrerasinternas" id="top-carreras">
 	<!-- -->
         <h1>*Selecciona tu deporte.</h1>
         <ul class="menu-carreras">

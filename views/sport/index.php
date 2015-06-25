@@ -1,3 +1,4 @@
+
 <?php
 /* @var $this yii\web\View */
 use yii\helpers\Url;
@@ -21,7 +22,7 @@ $(".prev").click(function(){
 <div class="cont-carrerasinternas">
     <!-- -->
         <h1>*Selecciona tu deporte.</h1>
-        <ul class="menu-carreras">
+        <ul class="menu-carreras" id="menu-carreras">
             <!-- <li><a href="#" id="btn-aventura" class="deporte-selected">AVENTURA</a></li> -->
             <?php foreach ($sports as $i => $sport) { ?>
             <li><a href="#<?= $sport->name ?>" style="background-color:<?= $sport->color ?>"><?= $sport->name ?></a></li>
@@ -61,3 +62,33 @@ $(".prev").click(function(){
         <!-- <a href="javascript:void(0)" id="flechaR" class="next"><img src="<?= Yii::getAlias('@web') ?>/img/ico-flechar.svg"/></a> -->
     <?php } ?>
 </div>
+         <a href="#" id="btn-topcarreras"><img src="<?= Yii::getAlias('@web') ?>/img/btn-top.png"/></a>
+ <script src="<?= Yii::getAlias('@web') ?>/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+ <script type="text/javascript">
+$(document).ready(function() {
+	
+     // grab the initial top offset of the navigation 
+    var sticky_navigation_offset_top = $('#menu-carreras').offset().top;
+     
+    // our function that decides weather the navigation bar should have "fixed" css position or not.
+    var sticky_navigation = function(){
+        var scroll_top = $(window).scrollTop(); // our current vertical position from the top
+        // if we've scrolled more than the navigation, change its position to fixed to stick to top,
+        // otherwise change it back to relative
+        if (scroll_top > sticky_navigation_offset_top) { 
+            $('#menu-carreras').css({ 'position': 'fixed', 'top':46, 'left':'10%', 'z-index':1000,'width':'91%','background-color':'#939393', });
+        } else {
+            $('#menu-carreras').css({ 'position': 'relative', 'width':'100%', 'top':0, 'left':0,'background-color':'transparent' }); 
+        }   
+    };
+     
+    // run our function on load
+    sticky_navigation();
+     
+    // and run it again every time you scroll
+    $(window).scroll(function() {
+         sticky_navigation();
+    });
+  
+});
+ </script>        

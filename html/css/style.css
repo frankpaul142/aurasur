@@ -586,9 +586,9 @@ top: -100%;
 	margin:0 2%;
 	}
 .link-informacion span{
-	width:76%;
+	width:76% !important;
 	float:left;
-	margin:5px 2% 0 2%;
+	margin:5px 2% 0 2% !important;
 	}	
 .link-informacion:hover{
 	background-color: #2f2342;
@@ -855,6 +855,29 @@ top: -100%;
 	background-color:#fff !important;
 	}		
 	
+/**/
+.link-infcarreras label{
+	width:100%;
+	float:left;
+	color:#FFFFFF;
+	margin:4% 0 0 0;
+	}
+.link-infcarreras select{
+	width:100%;
+	float:left;
+	margin:0 0 2% 0;
+	padding:3px 0;
+	}	
+.link-infcarreras2{
+	width:35%;
+	float:left;
+	}	
+.infor-carrera h1{
+	width:100%;
+	float:left;
+	margin:0;
+	padding:0;
+	}	
 
 	
 	
