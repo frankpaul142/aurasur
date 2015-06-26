@@ -28,7 +28,18 @@ class RaceController extends \yii\web\Controller
     {
         $model=Race::findOne($id);
     	if(isset($model)){
-            $racer=new Racer();
+	        $racer=new Racer();
+	        if ($racer->load(Yii::$app->request->post())){
+	        	$racer->race_id=$id;
+	        	$racer->creation_date=date('Y-m-d H:i:s');
+	        	if($racer->save()) {
+	        		$this->redirect(['pay','id'=>$id]);
+	        	}
+	        	else{
+	        		print_r($racer->getErrors());
+	        		die();
+	        	}
+	        }
     		return $this->render('view',[
     			'model'=>$model,
                 'racer'=>$racer,

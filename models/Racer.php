@@ -37,7 +37,7 @@ class Racer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'race_id', 'user_id', 'position_general', 'time1', 'creation_date'], 'required'],
+            [['category_id', 'race_id', 'user_id', 'creation_date'], 'required'],
             [['category_id', 'race_id', 'user_id', 'position_category', 'position_general'], 'integer'],
             [['time1', 'time2', 'creation_date'], 'safe']
         ];

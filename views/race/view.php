@@ -36,6 +36,7 @@ $this->title=$model->name;
 		        	<a class="ver-inscribirse">Inscrito</a>
 		        <?php } else {
 		        	$form = ActiveForm::begin(); ?>
+		        	<?= $form->field($racer,'user_id')->hiddenInput(['value'=>Yii::$app->user->id]) ?>
 		        	<?= $form->field($racer,'category_id')->dropDownList(ArrayHelper::map($model->categories,'id','name'),['prompt'=>'Escoge una categoría']) ?>
 		        	<?= Html::submitButton('Inscribirse', ['class' => 'ver-inscribirse']) ?>
 		        	<?php ActiveForm::end();
