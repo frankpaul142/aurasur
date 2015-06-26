@@ -40,9 +40,9 @@ $(window).scroll(function() {
 
 $(".sport").each(function(i) {
     var position = $(this).position();
-    console.log($(this).attr("id"));
-    console.log(position);
-    console.log("min: " + position.top + " / max: " + parseInt(position.top + $(this).height()));
+    // console.log($(this).attr("id"));
+    // console.log(position);
+    // console.log("min: " + position.top + " / max: " + parseInt(position.top + $(this).height()));
     $(this).scrollspy({
         min: position.top+46,
         max: position.top+46 + $(this).height(),

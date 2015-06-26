@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Race;
+use app\models\Racer;
 use app\models\RacerSearch;
 use app\models\User;
 use yii\helpers\Url;
@@ -27,8 +28,10 @@ class RaceController extends \yii\web\Controller
     {
         $model=Race::findOne($id);
     	if(isset($model)){
+            $racer=new Racer();
     		return $this->render('view',[
     			'model'=>$model,
+                'racer'=>$racer,
     		]);
     	}
     	else{
