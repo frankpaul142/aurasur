@@ -46,6 +46,9 @@ body {
 .links-perfil {
   width: 80%;
 }
+.menu-carreras li{
+	width:24.6%;
+	}
 }
 @media screen and (max-width: 680px) {
 .home-cont {
@@ -298,6 +301,8 @@ body {
 #flechaL, #flechaR {
   width: 10%;
   margin: 55% 0 0 0;
+}
+
 }
   }
 @media screen and (max-width: 360px) and (orientation : portrait) {
