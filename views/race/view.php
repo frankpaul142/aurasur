@@ -17,7 +17,7 @@ $this->title=$model->name;
 		<img src="<?= Yii::getAlias('@web') ?>/img/carrera/<?= $model->picture ?>" alt="imagen carrera"/>
 	    <div class="txt-carrera">
 	    	<?php if(Yii::$app->user->isGuest) { ?>
-	    		<strong>Inicia sesión para inscribirte</strong><br/>
+	    		<strong><a href="<?= Url::to(['site/login']) ?>">Inicia sesión</a> para inscribirte</strong><br/>
 	    	<?php } else {
 	    		$user=User::findOne(Yii::$app->user->id) ?>
 		    	<h1>DATOS DEL COMPETIDOR</h1>

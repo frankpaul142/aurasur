@@ -97,9 +97,9 @@ $(".sport").each(function(i) {
 		                        <strong>Valor: </strong><?= $race->cost ?> dólares
 		                    </div>
 		                    <?php if($race->status=='PENDING'){ ?>
-		                        <a href="#" class="ver-inscribirse">Inscribirse</a>
+		                        <a href="<?= Url::to(['race/view','id'=>$race->id]) ?>" class="ver-inscribirse">Ver Información</a>
 		                    <?php } elseif($race->status=='FINISHED') { ?>
-		                        <a href="<?= Url::to(['race/results','id'=>$race->id]) ?>" class="ver-resultados">Ver Resultados</a>
+		                        <a href="<?= Url::to(['race/view','id'=>$race->id]) ?>" class="ver-resultados">Ver Información</a>
 		                    <?php } ?>
 		                </div>
 		            </div>

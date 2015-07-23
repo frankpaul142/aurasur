@@ -45,8 +45,8 @@ AppAsset::register($this);
 	        ¡Ponte a Prueba!
 	        </span>
 	        <?php if(Yii::$app->user->isGuest){ ?>
-		        <a href="<?= Url::to(['user/create']) ?>" class="bnt-memb">Membresía</a>
-		        <a href="<?= Url::to(['site/login']) ?>" class="btn-iseccion">Inicia sesión</a>
+		        <a href="<?= Url::to(['site/login']) ?>" class="bnt-memb">Inicia sesión</a>
+		        <a href="<?= Url::to(['user/create']) ?>" class="btn-iseccion">Regístrate</a>
 	        <?php } else { ?>
 	        	<a href="<?= Url::to(['user/view','id'=>Yii::$app->user->id]) ?>" class="bnt-memb">Ver tu perfil</a>
 		        <a href="<?= Url::to(['site/logout']) ?>" data-method="post" class="btn-iseccion">Cerrar sesión</a>

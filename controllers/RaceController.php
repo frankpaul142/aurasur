@@ -127,7 +127,7 @@ class RaceController extends \yii\web\Controller
                 $baseUrl = Url::base(true);
                 $redirectUrls = new RedirectUrls();
                 $redirectUrls->setReturnUrl($baseUrl."/user/view?id=".$user->id."&r=ins")
-                    ->setCancelUrl($baseUrl."/race/pay?success=false&id".$id);
+                    ->setCancelUrl($baseUrl."/race/pay?success=false&id=".$id);
 
                 $payment = new Payment();
                 $payment->setIntent("sale")

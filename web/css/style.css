@@ -691,7 +691,7 @@ top: -100%;
 	float:left;
 	padding:1% 2.5%;
 	background: rgba(0,0,0,0.7);
-	max-height:300px;
+	/*max-height:300px;*/
 	}
 #mis-inscripciones, #historial-carreras{
 	display:none;
@@ -748,9 +748,10 @@ top: -100%;
 	float:left;
 	padding:5px 1%;
 	}
-.infor-cambiar input[type="text"], .infor-cambiar select{
+.infor-cambiar input, .infor-cambiar select{
 	width:100%;
 	padding:3px 0;
+	color: black;
 	}
 /**/
 #info-carrera{
