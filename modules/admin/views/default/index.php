@@ -8,6 +8,7 @@ use yii\helpers\BaseUrl;
     <?php if(!Yii::$app->user->isGuest){
         if(Yii::$app->user->identity->isAdmin){ ?>
         <ul>
+            <li><a href="<?= BaseUrl::home() ?>admin/report">Reportes</a></li>
             <li><a href="<?= BaseUrl::home() ?>admin/sport">Deportes</a></li>
             <li><a href="<?= BaseUrl::home() ?>admin/race">Carreras</a></li>
 			<li><a href="<?= BaseUrl::home() ?>admin/user">Usuarios</a></li>

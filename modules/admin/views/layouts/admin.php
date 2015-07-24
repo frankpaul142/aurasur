@@ -36,6 +36,7 @@ AdminAsset::register($this);
             if(!Yii::$app->user->isGuest){
                 if(Yii::$app->user->identity->isAdmin){
                     $items=[
+                        ['label'=>'Reportes', 'url'=>['/admin/report']],
                         ['label'=>'Deportes', 'url'=>['/admin/sport']],
                         ['label'=>'Carreras', 'url'=>['/admin/race']],
                         ['label'=>'Usuarios', 'url'=>['/admin/user']],
@@ -71,6 +72,7 @@ AdminAsset::register($this);
         <div class="container">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'options'=>['class'=>'breadcrumb hidden-print'],
             ]) ?>
             <?= $content ?>
         </div>

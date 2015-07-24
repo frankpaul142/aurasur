@@ -19,10 +19,12 @@ class AdminAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        // 'css/bootstrap-additions.min.css',
+        'css/jquery.jqplot.min.css',
     ];
     public $js = [
         'js/script.js',
+        'js/jquery.jqplot.min.js',
+        'js/jqplot.pieRenderer.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
