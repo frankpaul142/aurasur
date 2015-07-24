@@ -37,7 +37,8 @@ class Racer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'race_id', 'user_id', 'creation_date'], 'required'],
+            [['category_id', 'race_id', 'user_id', 'creation_date','place','payment'], 'required'],
+            [['place'],'string','max'=>100],
             [['category_id', 'race_id', 'user_id', 'position_category', 'position_general'], 'integer'],
             [['time1', 'time2', 'creation_date'], 'safe']
         ];
@@ -51,13 +52,15 @@ class Racer extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'category_id' => 'Categoría',
-            'race_id' => 'Race ID',
+            'race_id' => 'Carrera',
             'user_id' => 'Deportista',
             'position_category' => 'Posición Categoría',
             'position_general' => 'Posición General',
             'time1' => 'Tiempo Chip',
             'time2' => 'Tiempo Disparo',
             'creation_date' => 'Creation Date',
+            'place'=>'Lugar de Inscripción',
+            'payment'=>'Forma de Pago',
         ];
     }
 

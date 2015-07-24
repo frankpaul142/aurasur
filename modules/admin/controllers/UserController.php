@@ -8,6 +8,9 @@ use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Racer;
+use app\models\Race;
+use app\models\Categories;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -29,7 +32,7 @@ class UserController extends Controller
                 'rules' => [
                     // allow authenticated users
                     [
-                        'actions' => ['index','create','update','delete','view'],
+                        'actions' => ['index','create','update','delete','view','racer','categories'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -37,7 +40,7 @@ class UserController extends Controller
                         }
                     ],
                     [
-                        'actions' => ['create','view'],
+                        'actions' => ['racer','categories'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -87,10 +90,6 @@ class UserController extends Controller
         $model = new User();
 
         if ($model->load(Yii::$app->request->post())){
-            if(Yii::$app->user->identity->isSale){
-                $model->type='RACER';
-                $model->status='CONFIRMING';
-            }
             $model->password=hash('sha256',$model->identity);
             $model->creation_date=date('Y-m-d H:i:s');
             if($model->save()) {
@@ -104,6 +103,51 @@ class UserController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+    }
+
+    public function actionRacer()
+    {
+        $user = new User();
+        $racer = new Racer();
+        $races=Race::findAll(['status'=>'PENDING']);
+
+        if ($user->load(Yii::$app->request->post()) && $racer->load(Yii::$app->request->post())){
+            $user->type='RACER';
+            $user->status='ACTIVE';
+            $user->password=hash('sha256',$user->identity);
+            $user->creation_date=date('Y-m-d H:i:s');
+            if($user->save()) {
+            	$racer->place=strtoupper($racer->place);
+                $racer->user_id=$user->id;
+                $racer->creation_date=date('Y-m-d H:i:s');
+                if($racer->save()){
+	                Yii::$app->session->setFlash('racerCreated');
+	                return $this->redirect(['racer']);
+	            }
+	            else{
+	            	Yii::$app->session->setFlash('errorRacer',array_values($racer->getFirstErrors())[0]);
+	            }
+            }
+            else{
+                Yii::$app->session->setFlash('errorRacer',array_values($user->getFirstErrors())[0]);
+            }
+        }
+        return $this->render('racer', [
+            'user' => $user,
+            'racer'=>$racer,
+            'races'=>$races,
+        ]);
+    }
+
+    public function actionCategories($id)
+    {
+        $categories = Categories::findAll(['race_id' => $id]);
+        echo "<option>Selecciona una categoría</option>";
+        if($categories){
+         	foreach($categories as $category){
+				echo "<option value='".$category->category_id."'>".$category->category->name."</option>";
+         	}
+        }
     }
 
     /**

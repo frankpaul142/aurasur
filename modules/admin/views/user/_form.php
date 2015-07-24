@@ -16,9 +16,7 @@ use kartik\date\DatePicker;
     
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php if(Yii::$app->user->identity->isAdmin){ ?>
 	<?= $form->field($model, 'type')->dropDownList([ 'ADMIN' => 'ADMIN', 'RACER' => 'RACER', 'ORGANIZER' => 'ORGANIZER', 'SALE' => 'SALE', ], ['prompt' => '']) ?>
-    <?php } ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -56,9 +54,7 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'allergies')->textInput(['maxlength' => true]) ?>
 
-    <?php if(Yii::$app->user->identity->isAdmin){ ?>
     <?= $form->field($model, 'status')->dropDownList([ 'ACTIVE' => 'ACTIVE', 'INACTIVE' => 'INACTIVE', 'CONFIRMING' => 'CONFIRMING', ], ['prompt' => '']) ?>
-    <?php } ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
