@@ -33,7 +33,7 @@ class UserController extends \yii\web\Controller
         	$model->password=$model->hashPassword($model->password);
         	$model->confirmPassword=$model->hashPassword($model->confirmPassword);
         	$model->creation_date=date('Y-m-d H:i:s');
-        	$model->status='CONFIRMING';
+        	$model->status='ACTIVE';
             $model->type='RACER';
         	if ($model->save()) {
         		return $this->redirect('create2?id='.$model->id);
@@ -54,7 +54,7 @@ class UserController extends \yii\web\Controller
         if (isset($model)){
             if($model->load(Yii::$app->request->post())) {
                 if($model->save()){
-	        		Yii::$app->session->setFlash('registrado');
+	        		// Yii::$app->session->setFlash('registrado');
 	        		return $this->redirect(Yii::getAlias('@web').'/site/login');
 	            }
 	        	else{
