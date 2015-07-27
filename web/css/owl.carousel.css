@@ -18,7 +18,11 @@
 	position: relative;
 	width: 100%;
 	-ms-touch-action: pan-y;
-	height: 445px;
+	height: auto;
+	float:left;
+	margin:0 0 1.5% 0;
+	border-bottom:1px solid rgba(213,213,213,0.7);
+	padding:0 0 1% 0;
 }
 .owl-carousel .owl-wrapper{
 	display: none;

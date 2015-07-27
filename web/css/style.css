@@ -314,7 +314,7 @@ top: -100%;
 	float:left;
 	}	
 .cont-registraperfil span{
-	width:90%;
+	width:100%;
 	padding:1% 5%;
 	background-color:#8c8e90;
 	color:#FFF;
@@ -332,17 +332,22 @@ top: -100%;
 	float: left;
 	text-align: right;
 	color: #FFF;
-	margin: 1% 2% 0 0;
+	margin: 0.2% 2% 0 0;
+	font-family: 'ralewaybold';
 	}
 .cont-registraperfil input[type="text"], .cont-registraperfil input[type="password"]{
-	width:59%;
+	width:57%;
 	float:left;
-	padding:3px 0;
+	padding:3px 1%;
+	font-family: 'ralewaybold';
+	font-size:0.9em;
 	}	
 .cont-registraperfil select{
-	width:59%;
+	width:57%;
 	float:left;
 	padding:3px 0;
+	font-family: 'ralewaybold';
+	font-size:0.9em;
 	}
 .cont-registraperfil button[type="submit"]{
 	width:50%;
@@ -474,9 +479,9 @@ top: -100%;
   	font-size: 1.2em;
 	}						
 .img-carrera{
-	width:80%;
+	width:70%;
 	float:left;
-	margin:2% 10% 0 10%;
+	margin:2% 15% 0 15%;
 	}	
 .inf-carrera{
 	width:80%;
@@ -485,12 +490,13 @@ top: -100%;
 	float:left;
 	color:#FFF;
 	margin:5% 0 0 0;
+	font-size:0.9em;
 	}
 .ver-resultados, .ver-inscribirse{
 	width:80%;
 	margin:5% 10%;
 	text-align:center;
-	font-size:1em;
+	font-size:0.8em;
 	color:#FFF;
 	font-family: 'ralewaybold';
 	float:left;
@@ -808,7 +814,7 @@ top: -100%;
 	}	
 /**/
 .input-group{
-	width:100% !important;
+	width:57% !important;
 	float:left !important;
 	}	
 .input-group input{
@@ -822,6 +828,7 @@ top: -100%;
 	float:left;
 	padding:0;
 	margin:0 0 0.5% 0;
+	z-index:1000;
 	}
 .menu-carreras li{
 	width:12.1%;
@@ -912,5 +919,13 @@ top: -100%;
 	float:left;
 	margin:0;
 	padding:0;
+	}
+/**/
+.help-block	{
+	font-size:0.8em !important;
+	float:left;
+	width: 59%;
+    margin: 0 0 0 40%;
+	font-family: 'ralewaybold';
 	}	
 			
